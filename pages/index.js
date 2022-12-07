@@ -2,6 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+async function requestNextAPI(){
+  const request = await fetch('https://next-12-gilt.vercel.app/api/hello');
+  const response = await request.json();
+  console.log(response);
+}
+
 export default function Home() {
   return (
     <div className={styles.container}>
