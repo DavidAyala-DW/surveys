@@ -1,6 +1,6 @@
 async function requestProductInfo(id){
 
-  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/products/${id}.json`,{
+  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/variants/${id}.json`,{
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
@@ -24,9 +24,9 @@ export default async function handler(req, res) {
   try {
 
     const [productData] = await Promise.all([requestProductInfo(id)]);
-    const {product} = productData;
+    const {variant} = productData;
 
-    res.status(200).json({product})
+    res.status(200).json({variant})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
