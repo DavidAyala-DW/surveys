@@ -37,18 +37,33 @@ export default async function handler(req, res) {
     method,
   } = req
 
-  console.log(id,method);
-
   try {
 
     const [customerData, ordersData] = await Promise.all([requestCustomerInfo(id),requestOrders(id)]);
-
     const {id: userID , email, first_name, last_name} = customerData["customer"];
-  
-    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersData})
+
+    const {orders} = ordersData;
+
+    let ordersObjects = [];
+    orders.forEach(order => {
+
+      let line_items_objects = [];
+      const {line_items} = order;
+      
+      line_items.forEach(line_item => {
+        const {id,title, quantity, product_id, price} = line_item;
+        line_items_objects = [...line_items_objects, {id,title,quantity,product_id,price}];
+      })
+
+      const {id, created_at, order_number} = order;
+      ordersObjects = [...ordersObjects, {id, created_at, order_number, line_items: line_items_objects}]
+      
+    })
+
+    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects})
 
   } catch (error) {
-    res.status(200).json({error})
+    res.status(200).json({errorMessage: error})
   }
   
 }
