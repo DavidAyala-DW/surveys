@@ -1,6 +1,6 @@
 async function requestAllUsers(){
 
-  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?query=orders_count:1`,{
+  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?limit=100&query=orders_count:1`,{
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
