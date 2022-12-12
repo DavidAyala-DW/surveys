@@ -24,8 +24,9 @@ export default async function handler(req, res) {
   try {
 
     const [productData] = await Promise.all([requestProductInfo(id)]);
+    const {product} = productData;
 
-    res.status(200).json({product: productData})
+    res.status(200).json({product})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
