@@ -49,7 +49,7 @@ export default async function handler(req, res) {
 
       let line_items_objects = [];
       const {line_items} = order;
-      
+
       line_items.forEach(line_item => {
         const {id,title, quantity, product_id, price} = line_item;
         line_items_objects = [...line_items_objects, {id,title,quantity,product_id,price}];
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
       
     })
 
-    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects})
+    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects, fullOrders: orders})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
