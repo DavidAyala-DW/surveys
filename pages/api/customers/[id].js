@@ -60,7 +60,7 @@ export default async function handler(req, res) {
       
     })
 
-    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects, fullOrders: orders})
+    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})

@@ -24,11 +24,18 @@ export default async function handler(req, res) {
   try {
 
     const [allUsers] = await Promise.all([requestAllUsers()]);
-    console.log(allUsers);
+    const {customers} = allUsers;
+    
+    let ids = [];
+    customers.forEach(user => {
+      const {id} = user;
+      ids = [...ids, id];
+    })
+    // console.log(allUsers);
 
     // const {product} = productData;
 
-    res.status(200).json({allUsers})
+    res.status(200).json({users: ids})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
