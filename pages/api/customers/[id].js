@@ -51,8 +51,8 @@ export default async function handler(req, res) {
       const {line_items} = order;
 
       line_items.forEach(line_item => {
-        const {id,title, quantity, product_id, price} = line_item;
-        line_items_objects = [...line_items_objects, {id,title,quantity,product_id,price}];
+        const {id,title, quantity, product_id, variant_id, price} = line_item;
+        line_items_objects = [...line_items_objects, {id,title,quantity,product_id,price,variant_id}];
       })
 
       const {id, created_at, order_number} = order;
