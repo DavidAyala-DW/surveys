@@ -18,8 +18,9 @@ export default async function handler(req, res) {
     });
   
     const response = await request.json();
+    const {id: userID , email, first_name, last_name} = response["customer"];
   
-    res.status(200).json({response})
+    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}})
 
   } catch (error) {
     res.status(200).json({error})
