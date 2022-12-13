@@ -1,6 +1,6 @@
 async function requestAllUsers(){
 
-  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?since_id=2&limit=50&query=orders_count:1`,{
+  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?limit=50&query=orders_count:2`,{
   // const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/orders/5078288892141.json`,{
   // const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/orders/5031330775277.json`,{
     method: "GET",
