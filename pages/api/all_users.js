@@ -1,6 +1,8 @@
 async function requestAllUsers(){
 
-  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?limit=100&query=orders_count:1`,{
+  const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/customers/search.json?since_id=2&limit=100&query=orders_count:2`,{
+  // const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/orders/5078288892141.json`,{
+  // const request = await fetch(`https://www.kurufootwear.com/admin/api/2022-10/orders/5031330775277.json`,{
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
@@ -31,9 +33,6 @@ export default async function handler(req, res) {
       const {id} = user;
       ids = [...ids, id];
     })
-    // console.log(allUsers);
-
-    // const {product} = productData;
 
     res.status(200).json({users: ids})
 
