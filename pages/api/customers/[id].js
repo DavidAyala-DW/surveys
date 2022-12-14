@@ -4,7 +4,7 @@ async function requestCustomerInfo(id){
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'X-Shopify-Access-Token': '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'
+      'X-Shopify-Access-Token': process.env.SHOPIFY_TOKEN
     }
   });
 
@@ -20,7 +20,7 @@ async function requestOrders(id){
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'X-Shopify-Access-Token': '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'
+      'X-Shopify-Access-Token': process.env.SHOPIFY_TOKEN
     }
   });
 
