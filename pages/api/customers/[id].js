@@ -56,7 +56,7 @@ export default async function handler(req, res) {
       })
 
       const {id, created_at, order_number, fulfillments, refunds, shipping_address, tags} = order;
-      ordersObjects = [...ordersObjects, {id, created_at, order_number, line_items: line_items_objects, fulfillments, refunds, shipping_address, tags}]
+      ordersObjects = [...ordersObjects, {id, created_at, order_number, line_items: line_items_objects, fulfillments, refunds, shipping_address, tags, tags2:tags}]
       
     })
 
