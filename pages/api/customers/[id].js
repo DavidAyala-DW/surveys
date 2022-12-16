@@ -40,7 +40,7 @@ export default async function handler(req, res) {
   try {
 
     const [customerData, ordersData] = await Promise.all([requestCustomerInfo(id),requestOrders(id)]);
-    const {id: userID , email, first_name, last_name} = customerData["customer"];
+    const {id: userID , email, first_name, last_name, state} = customerData["customer"];
 
     const {orders} = ordersData;
 
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
       
     })
 
-    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name}, orders: ordersObjects, fullOrders: orders})
+    res.status(200).json({customer_info: {id :userID ,email, first_name, last_name, state}, orders: ordersObjects})
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
