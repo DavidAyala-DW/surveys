@@ -63,25 +63,25 @@ export default async function handler(req, res) {
   
   try {
 
-    // const results = await Promise.all([...bodyEntries.map( async([key,value]) => {
-    //   return await setMetafield(id, key, value);
-    // })]);
+    const results = await Promise.all([...bodyEntries.map( async([key,value]) => {
+      return await setMetafield(id, key, value);
+    })]);
 
-    // let response;
+    let response;
 
-    // if(results.some(result => result?.status == "successful" )){
-    //   let messages = results.map(item => item?.message);
-    //   let status = "successful";
-    //   response = {messages, status};
-    // }
+    if(results.some(result => result?.status == "successful" )){
+      let messages = results.map(item => item?.message);
+      let status = "successful";
+      response = {messages, status};
+    }
 
-    // if(results.every(result => result?.status == "failed" )){
-    //   let messages = results.map(item => item?.message);
-    //   let status = "failed";
-    //   response = {messages, status};
-    // }
+    if(results.every(result => result?.status == "failed" )){
+      let messages = results.map(item => item?.message);
+      let status = "failed";
+      response = {messages, status};
+    }
 
-    res.status(200).json({response: bodyEntries, body})
+    res.status(200).json(response)
 
   } catch (error) {
     res.status(200).json({errorMessage: error})
